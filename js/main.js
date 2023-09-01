@@ -1,32 +1,7 @@
-const board = document.querySelector('#board')
-const SQUARES_NUMBER = 500
-
-for (let i = 0; i < SQUARES_NUMBER; i++) {
-  const square = document.createElement('div')
-  square.classList.add('square')
-
-  square.addEventListener('mouseover', setColor)
-  square.addEventListener('mouseleave', removeColor)
-
-  board.append(square)
-}
-
-function setColor(event) {
-  const elememt = event.target
-  // elememt.style.backgroundColor = elementColor
-  elememt.style.boxShadow = '0 0 1px #fff'
-}
-
-function removeColor(event) {
-  const elememt = event.target
-  elememt.removeAttribute('style')
-}
-
-
 const selectPerson = document.querySelectorAll('.js-select-person')
 const boxPerson = document.querySelectorAll('.js-txt-person')
-const btnStartVlad = document.querySelector('.js-btn-start-vlad')
-const btnStartVeronika = document.querySelector('.js-btn-start-veronika')
+const btnStartVlad = document.querySelectorAll('.js-btn-start-vlad')
+const btnStartVeronika = document.querySelectorAll('.js-btn-start-veronika')
 const pageQuestions = document.querySelector('.js-questions')
 const pageResult = document.querySelector('.js-result')
 let countMoney = 10
@@ -35,6 +10,7 @@ let countRelax = 10
 
 questionsVlad.forEach(item => {
   pageQuestions.insertAdjacentHTML("beforeend", `<section class="question js-cart-vlad">
+  <div class="board js-board"></div>
   <div class="question__icon">
     <img src="${item.img}" alt="" class="question__icon-img">
   </div>
@@ -108,6 +84,7 @@ questionsVlad.forEach(item => {
 
 questionsVeronika.forEach(item => {
   pageQuestions.insertAdjacentHTML("beforeend", `<section class="question js-cart-veronika">
+  <div class="board js-board"></div>
   <div class="question__icon">
     <img src="${item.img}" alt="" class="question__icon-img">
   </div>
@@ -179,8 +156,9 @@ questionsVeronika.forEach(item => {
 </section> `)
 })
 
-resultVlad.forEach(item => { 
+resultVlad.forEach(item => {
   pageResult.insertAdjacentHTML("beforeend", `<div class="js-result-vlad none-active">
+    <div class="board js-board"></div>  
     <header class="header header--no-bg">
       <div class="container header__row">
         <div class="logos header__logos">
@@ -227,9 +205,10 @@ resultVlad.forEach(item => {
   </div>`)
 })
 
-resultVeronika.forEach(item => { 
+resultVeronika.forEach(item => {
   pageResult.insertAdjacentHTML("beforeend", `<div class="js-result-veronika none-active">
-    <header class="header header--no-bg">
+  <div class="board js-board"></div>  
+  <header class="header header--no-bg">
       <div class="container header__row">
         <div class="logos header__logos">
           <img src="img/brodude.svg" alt="" class="logos__img">
@@ -293,48 +272,55 @@ selectPerson.forEach(item => {
   item.addEventListener('mouseover', selectBox)
 })
 
-// selectPerson.forEach(item => {
-//   item.addEventListener('mouseleave', unSelectBox)
-// })
+selectPerson.forEach(item => {
+  if(window.innerWidth >= 660) { 
+    item.addEventListener('mouseleave', unSelectBox)
+  }
+})
 
-indicatorColor(numbMoney) 
-indicatorColor(numbFamily) 
+indicatorColor(numbMoney)
+indicatorColor(numbFamily)
 indicatorColor(numbRelax)
 
 function indicatorColor(item) {
   item.forEach(elem => {
-    if(elem.innerText.includes('-')){
+    if (elem.innerText.includes('-')) {
       elem.classList.add('indicators__sup--red')
     }
   })
 }
 
-// function unSelectBox(e) {
-//   boxPerson.forEach(item => {
-//     item.classList.remove('active-flex')
-//   })
-//   document.querySelector('#no-person').classList.add('active-flex');
-//   sectionPerson.classList.remove('person-selected')
-// }
+function unSelectBox(e) {
+  e.preventDefault()
+  boxPerson.forEach(item => {
+    item.classList.remove('active-flex')
+  })
+  document.querySelector('#no-person').classList.add('active-flex');
+  sectionPerson.classList.remove('person-selected')
+}
 
 function selectBox() {
   boxPerson.forEach(item => {
     item.classList.remove('active-flex')
-    if(item.getAttribute('id') === this.getAttribute('data-person')){
+    if (item.getAttribute('id') === this.getAttribute('data-person')) {
       item.classList.add('active-flex')
-    }   
+    }
   })
   sectionPerson.classList.add('person-selected')
 }
 
-btnStartVlad.addEventListener('click', function () {
-  startGame()
-  game(0, questionsVlad, cardVlad, resultVladBox)
+btnStartVlad.forEach(item => {
+  item.addEventListener('click', function () {
+    startGame()
+    game(0, questionsVlad, cardVlad, resultVladBox)
+  })
 })
 
-btnStartVeronika.addEventListener('click', function () {
-  startGame()
-  game(0, questionsVeronika, cardVeronika, resultVeronikaBox)
+btnStartVeronika.forEach(item => {
+  item.addEventListener('click', function () {
+    startGame()
+    game(0, questionsVeronika, cardVeronika, resultVeronikaBox)
+  })
 })
 
 function startGame() {
@@ -348,27 +334,28 @@ function startGame() {
 
 function game(i, person, card, resultEl) {
   if (i <= person.length - 1) {
-    scrollTo({
-      top: 0,
-      behavior: "smooth"
-    })
     card.forEach(elem => {
       elem.classList.remove('active-flex')
     })
+    console.log(scrollTo)
+    card[i].scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     card[i].classList.add('active-flex')
     var item = card[i].querySelectorAll('.js-answer-title')
     var itemText = card[i].querySelectorAll('.js-answer-text')
-   
+
     item.forEach((elem, ind) => {
-     
+
       elem.addEventListener('click', function (e) {
-         
+
         item.forEach(it => {
           it.classList.add('none-active')
         })
         elem.classList.remove('none-active')
         elem.classList.add('active')
-        
+
         itemText.forEach(text => {
           text.classList.remove('active-block')
         })
@@ -387,7 +374,7 @@ function game(i, person, card, resultEl) {
         textCountRelax.forEach(text => {
           text.textContent = countRelax
         })
-        
+
         next[i].classList.add('active-block')
       })
     })
@@ -427,6 +414,36 @@ function game(i, person, card, resultEl) {
       })
       resultEl[0].classList.remove('none-active')
     }
-    
+
   }
+}
+
+const board = document.querySelectorAll('.js-board')
+const SQUARES_NUMBER = 100
+let squareWidth = document.querySelector('body').offsetWidth / 10
+
+board.forEach(item => {
+  for (let i = 0; i < SQUARES_NUMBER; i++) {
+    const square = document.createElement('div')
+
+    square.classList.add('square')
+    square.style.width = `${squareWidth}px`
+    square.style.height = `${squareWidth}px`
+
+    square.addEventListener('mouseover', setColor)
+    square.addEventListener('mouseleave', removeColor)
+
+    item.append(square)
+  }
+})
+
+function setColor(event) {
+  const elememt = event.target
+  // elememt.style.backgroundColor = elementColor
+  elememt.classList.add('active-square')
+}
+
+function removeColor(event) {
+  const elememt = event.target
+  elememt.classList.remove('active-square')
 }
