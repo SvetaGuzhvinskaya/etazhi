@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="fonts/circe-extrabold.woff2" as="font">
+  <link rel="preload" href="fonts/circe-bold.woff2" as="font">
+  <link rel="preload" href="fonts/circe-regular.woff2" as="font">
+</head>
+<body>
+  <!-- <div class="static-bg-color"></div> -->
+  <div class="start-page js-start">  
+    <header class="header">
+      <div id="board" class="board js-board"></div>
+      <div class="container header__row">
+        <div class="logos header__logos">
+          <img src="img/brodude.svg" alt="" class="logos__img">
+          <span class="logos__x"></span>
+          <img src="img/etazhi.svg" alt="" class="logos__img">
+        </div>
+        <h1 class="title header__title">Заработать миллион<br>и остаться счастливым</h1>
+        <p class="header__discription">Проживи жизнь риелтора</p>
+      </div>
+      
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="section-person">
+          <div class="section-person__col person-img js-select-person" data-person="vlad">
+            <picture class="person-img__pic">
+              <source media="(max-width: 660px)" srcset="img/person-vlad-320.png">
+              <source media="(max-width: 950px)" srcset="img/person-vlad.jpg">
+              <source media="(max-width: 1400px)" srcset="img/person-vlad-1000.jpg">
+              <img class="person-img__img" src="img/person-vlad.jpg" alt="Влад">
+            </picture>
+            <button class="btn person-img__btn js-btn-start-vlad">Выбрать</button>
+          </div>
+          <div class="section-person__col person-img js-select-person" data-person="veronika">
+            <picture class="person-img__pic">
+              <source media="(max-width: 660px)" srcset="img/person-veronika-320.png">
+              <source media="(max-width: 950px)" srcset="img/person-veronika.jpg">
+              <source media="(max-width: 1400px)" srcset="img/person-veronika-1000.jpg">
+              <img class="person-img__img" src="img/person-veronika.jpg" alt="Вероника">
+            </picture>
+            <button class="btn person-img__btn js-btn-start-veronika">Выбрать</button>
+          </div>
+          <div id="veronika" class="section-person__col section-person__col--txt js-txt-person">
+            <h2 class="sub-title">Привет!<br>Это Вероника.</h2>
+            <ul class="indicators">
+              <li class="indicators__item indicators__item--money">
+                <div class="indicators__numb">10</div>
+              </li>
+              <li class="indicators__item indicators__item--family">
+                <div class="indicators__numb">10</div>
+              </li>
+              <li class="indicators__item indicators__item--relax">
+                <div class="indicators__numb">10</div>
+              </li>
+            </ul>
+            <div class="entry">
+              <p class="description">Сейчас она лучший риелтор в своей сфере: клиенты приходят к ней сами, каждый месяц Вероника закрывает выгодные сделки и имеет доход — «ни в чем себе не отказывай».</p>
+              <p class="description">Строить свою карьеру она начала только год назад. Тогда вместо покупки нового Мерседеса Вероника была вынуждена оплачивать ипотеку, а остальные деньги уходили на семью. Ей приходилось много работать, быть хорошей матерью и женой, а ещё не забывать о себе. Вероника справилась! А ты сможешь? </p>
+              <p class="description">Мы предлагаем тебе окунуться в атмосферу фильма «Хочу как ты», пожить 8 дней жизнью риелтора и узнать, сможешь ли ты заработать миллион, стать топовым специалистом и не потерять своё счастье.</p>
+            </div>
+            <button class="btn vs-xs js-btn-start-veronika">Выбрать</button>
+          </div>
+          <div id="vlad" class="section-person__col section-person__col--txt js-txt-person">
+            <h2 class="sub-title">Привет!<br>Это Влад</h2>
+            <ul class="indicators">
+              <li class="indicators__item indicators__item--money">
+                <div class="indicators__numb">10</div>
+              </li>
+              <li class="indicators__item indicators__item--family">
+                <div class="indicators__numb">10</div>
+              </li>
+              <li class="indicators__item indicators__item--relax">
+                <div class="indicators__numb">10</div>
+              </li>
+            </ul>
+            <div class="entry">
+              <p class="description">Сейчас он лучший риелтор в своей сфере: клиенты приходят к нему сами, каждый месяц Влад закрывает выгодные сделки и имеет доход — «ни в чем себе не отказывай».</p>
+              <p class="description">Строить свою карьеру он начал только год назад. Тогда вместо покупки нового Мерседеса Влад был вынужден оплачивать ипотеку, а остальные деньги уходили на семью. Ему приходилось много работать, быть хорошим отцом и мужем, а ещё не забывать о себе. Влад справился! А ты сможешь?</p>
+              <p class="description">Мы предлагаем тебе окунуться в атмосферу фильма «Хочу как ты», пожить 8 дней жизнью риелтора и узнать, сможешь ли ты заработать миллион, стать топовым специалистом и не потерять своё счастье.</p>
+            </div>
+            <button class="btn vs-xs js-btn-start-vlad">Выбрать</button>
+          </div>
+          <div id="no-person" class="section-person__col section-person__empty section-person__col--txt js-txt-person active-flex">
+            <h2 class="sub-title">Выбери героя</h2>
+            <div class="entry">
+              <p class="description">Наведи мышкой на карточку;)</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container footer__row">
+        <div class="footer__col">
+          <h3 class="footer__title">Над проектом работали:</h3>
+          <p class="footer__discription">Креатор:<br>
+            Проджект-менеджер: Сергей Паксюткин<br>
+            Автор текста: Виктория Шевченко<br>
+            Редактор: Вера Широких<br>
+            Дизайнер: Игорь Никифоров<br>
+            Вёрстка:</p>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__title">
+            <a href="#" target="_blank">Double Day</a>
+          </h3>
+          <p class="footer__discription">2023</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="questions-page js-questions"></div>
+  <div class="result-page js-result"></div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
