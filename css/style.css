@@ -519,6 +519,7 @@ ol {
   background-repeat: no-repeat;
   background-color: #f06060;
   background-size: 100% auto;
+  overflow: hidden;
 }
 .result-page:before {
   position: absolute;
