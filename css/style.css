@@ -28,6 +28,9 @@
   font-style: normal;
   font-display: swap;
 }
+html {
+  /* scroll-behavior: smooth; */
+}
 body,
 html {
   margin: 0;
@@ -89,9 +92,21 @@ ol {
   overflow: hidden;
   text-decoration: none;
   transition: all .4s ease-in-out;
+  border: none;
 }
 .btn:hover {
   background: linear-gradient(270deg, #FA4241 0%, #FA7160 100%);
+}
+.btn--outline {
+  padding: 13px 38px;
+  background: none;
+  border: 2px solid #FA7160;
+  color: #FA7160;
+}
+.btn--outline:hover {
+  background: none;
+  border-color: #FA4241;
+  color: #FA4241;
 }
 .indicators {
   margin-bottom: 30px;
@@ -198,6 +213,18 @@ ol {
 .active-flex {
   display: flex;
 }
+
+.mouse-icon {
+  margin: 0 auto;
+  width: 20px;
+  height: 50px;
+  background: 0 0 url('../img/mouse.svg') no-repeat;
+  background-size: 100% 100%;
+}
+.btns-group {
+  display: flex;
+  justify-content: space-between;
+}
 /* HEADER */
 .header {
   position: relative;
@@ -237,7 +264,13 @@ ol {
   margin-bottom: 150px;
 }
 .header__discription {
+  position: relative;
   margin-top: auto;
+  z-index: 20;
+}
+.header__discription a {
+  color: #fff;
+  text-decoration: none;
 }
 .header__title {
   margin-top: auto;

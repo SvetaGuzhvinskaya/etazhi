@@ -190,7 +190,10 @@ resultVlad.forEach(item => {
             <div class="result__entry js-result-entry">
               ${item.text}
             </div>
-            <a href="#" class="btn">Узнать подробнее</a>
+            <div class="btns-group">
+              <a href="#" class="btn">Узнать подробнее</a>
+              <a href="#" class="btn btn--outline">Пройти еще раз</a>
+            </div>
           </div>
         </section>
       </div>
@@ -239,8 +242,11 @@ resultVeronika.forEach(item => {
             <div class="result__entry js-result-entry">
               ${item.text}
             </div>
-            <a href="#" class="btn">Узнать подробнее</a>
-          </div>
+            <div class="btns-group">
+              <a href="#" class="btn">Узнать подробнее</a>
+              <a href="#" class="btn btn--outline">Пройти еще раз</a>
+            </div>
+          </div> 
         </section>
       </div>
     </main>
