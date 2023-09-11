@@ -4,6 +4,7 @@ const btnStartVlad = document.querySelectorAll('.js-btn-start-vlad')
 const btnStartVeronika = document.querySelectorAll('.js-btn-start-veronika')
 const pageQuestions = document.querySelector('.js-questions')
 const pageResult = document.querySelector('.js-result')
+
 let countMoney = 10
 let countFamily = 10
 let countRelax = 10
@@ -157,7 +158,7 @@ questionsVeronika.forEach(item => {
 })
 
 resultVlad.forEach(item => {
-  pageResult.insertAdjacentHTML("beforeend", `<div class="js-result-vlad none-active">
+  pageResult.insertAdjacentHTML("beforeend", `<div class="js-result-vlad result-box">
     <div class="board js-board"></div>  
     <header class="header header--no-bg">
       <div class="container header__row">
@@ -192,7 +193,7 @@ resultVlad.forEach(item => {
             </div>
             <div class="btns-group">
               <a href="#" class="btn">Узнать подробнее</a>
-              <a href="#" class="btn btn--outline">Пройти еще раз</a>
+              <button class="btn btn--outline js-btn-repeat">Пройти еще раз</button>
             </div>
           </div>
         </section>
@@ -209,7 +210,7 @@ resultVlad.forEach(item => {
 })
 
 resultVeronika.forEach(item => {
-  pageResult.insertAdjacentHTML("beforeend", `<div class="js-result-veronika none-active">
+  pageResult.insertAdjacentHTML("beforeend", `<div class="js-result-veronika result-box">
   <div class="board js-board"></div>  
   <header class="header header--no-bg">
       <div class="container header__row">
@@ -244,7 +245,7 @@ resultVeronika.forEach(item => {
             </div>
             <div class="btns-group">
               <a href="#" class="btn">Узнать подробнее</a>
-              <a href="#" class="btn btn--outline">Пройти еще раз</a>
+              <button class="btn btn--outline js-btn-repeat">Пройти еще раз</button>
             </div>
           </div> 
         </section>
@@ -271,6 +272,7 @@ let textCountFamily = document.querySelectorAll('.js-text-family')
 let textCountRelax = document.querySelectorAll('.js-text-relax')
 const resultVladBox = document.querySelectorAll('.js-result-vlad')
 const resultVeronikaBox = document.querySelectorAll('.js-result-veronika')
+const btnRepeat = document.querySelectorAll('.js-btn-repeat')
 
 const sectionPerson = document.querySelector('.section-person')
 
@@ -328,6 +330,14 @@ btnStartVeronika.forEach(item => {
     game(0, questionsVeronika, cardVeronika, resultVeronikaBox)
   })
 })
+console.log(btnRepeat)
+
+btnRepeat.forEach(item => {
+  item.addEventListener('click', function () {
+  console.log('btnRepeat')
+  repeatGame()
+})
+})
 
 function startGame() {
   scrollTo({
@@ -338,12 +348,20 @@ function startGame() {
   pageQuestions.classList.add('active-block')
 }
 
+function repeatGame() {
+  scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+  document.querySelector('.js-start').classList.remove('none-active')
+  pageResult.classList.remove('active-block')
+}
+
 function game(i, person, card, resultEl) {
   if (i <= person.length - 1) {
     card.forEach(elem => {
       elem.classList.remove('active-flex')
     })
-    console.log(scrollTo)
     card[i].scrollTo({
       top: 0,
       behavior: "smooth",
@@ -401,24 +419,24 @@ function game(i, person, card, resultEl) {
     pageResult.classList.add('active-block')
     if (countMoney > countFamily && countRelax > countFamily) {
       resultEl.forEach(result => {
-        result.classList.add('none-active')
+        result.classList.remove('active-block')
       })
-      resultEl[1].classList.remove('none-active')
+      resultEl[1].classList.add('active-block')
     } else if (countMoney > countRelax && countFamily > countRelax) {
       resultEl.forEach(result => {
-        result.classList.add('none-active')
+        result.classList.remove('active-block')
       })
-      resultEl[2].classList.remove('none-active')
+      resultEl[2].classList.add('active-block')
     } else if (countRelax > countMoney && countFamily > countMoney) {
       resultEl.forEach(result => {
-        result.classList.add('none-active')
+        result.classList.remove('active-block')
       })
-      resultEl[3].classList.remove('none-active')
+      resultEl[3].classList.add('active-block')
     } else {
       resultEl.forEach(result => {
-        result.classList.add('none-active')
+        result.classList.remove('active-block')
       })
-      resultEl[0].classList.remove('none-active')
+      resultEl[0].classList.add('active-block')
     }
 
   }
