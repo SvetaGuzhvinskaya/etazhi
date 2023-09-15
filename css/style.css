@@ -553,8 +553,12 @@ ol {
 }
 .answers-list__tit {
   padding: 19px 40px;
+  width: 100%;
+  background: transparent;
   border-radius: 8px;
+  font-family: 'Circe Regular', sans-serif;
   font-size: 20px;
+  text-align: left;
   line-height: 25px;
   border: 1px solid #130909;
   cursor: pointer;
@@ -565,6 +569,7 @@ ol {
   border-color: #FA4241;
 }
 .answers-list__tit.active {
+  color: #130909;
   border-color: #FA4241;
   cursor: default;
 }
@@ -996,7 +1001,7 @@ ol {
   .header__row {
     align-items: start;
     text-align: left;
-    min-height: 100vh;
+    min-height: 90vh;
   }
   .header--no-bg .header__row {
     align-items: center;

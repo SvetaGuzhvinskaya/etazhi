@@ -20,7 +20,7 @@ questionsVlad.forEach(item => {
     <div class="question__question">${item.question}</div>
     <ul class="answers-list">
       <li class="answers-list__item">
-        <div class="answers-list__tit js-answer-title">${item.answers[0].title}</div>
+        <button class="answers-list__tit js-answer-title">${item.answers[0].title}</button>
         <div class="answers-list__txt js-answer-text">
           <div class="answers-list__entry">
             <ul class="indicators indicators--sup-vers">
@@ -40,7 +40,7 @@ questionsVlad.forEach(item => {
         </div>
       </li>
       <li class="answers-list__item">
-        <div class="answers-list__tit  js-answer-title">${item.answers[1].title}</div>
+        <button class="answers-list__tit  js-answer-title">${item.answers[1].title}</button>
         <div class="answers-list__txt js-answer-text">
           <div class="answers-list__entry">
             <ul class="indicators indicators--sup-vers">
@@ -60,7 +60,7 @@ questionsVlad.forEach(item => {
         </div>
       </li>
       <li class="answers-list__item">
-        <div class="answers-list__tit  js-answer-title">${item.answers[2].title}</div></li>
+        <button class="answers-list__tit  js-answer-title">${item.answers[2].title}</button>
         <div class="answers-list__txt js-answer-text">
           <div class="answers-list__entry">
             <ul class="indicators indicators--sup-vers">
@@ -78,6 +78,7 @@ questionsVlad.forEach(item => {
           </div>
           <button class="btn js-next">Продолжить</button>
         </div>
+        </li>
     </ul>
   </div>
 </section> `)
@@ -94,7 +95,7 @@ questionsVeronika.forEach(item => {
     <div class="question__question">${item.question}</div>
     <ul class="answers-list">
       <li class="answers-list__item">
-        <div class="answers-list__tit js-answer-title">${item.answers[0].title}</div>
+        <button class="answers-list__tit js-answer-title">${item.answers[0].title}</button>
         <div class="answers-list__txt js-answer-text">
           <div class="answers-list__entry">
             <ul class="indicators indicators--sup-vers">
@@ -114,7 +115,7 @@ questionsVeronika.forEach(item => {
         </div>
       </li>
       <li class="answers-list__item">
-        <div class="answers-list__tit  js-answer-title">${item.answers[1].title}</div>
+        <button class="answers-list__tit  js-answer-title">${item.answers[1].title}</button>
         <div class="answers-list__txt js-answer-text">
           <div class="answers-list__entry">
             <ul class="indicators indicators--sup-vers">
@@ -134,7 +135,7 @@ questionsVeronika.forEach(item => {
         </div>
       </li>
       <li class="answers-list__item">
-        <div class="answers-list__tit  js-answer-title">${item.answers[2].title}</div></li>
+        <button class="answers-list__tit  js-answer-title">${item.answers[2].title}</button>
         <div class="answers-list__txt js-answer-text">
           <div class="answers-list__entry">
             <ul class="indicators indicators--sup-vers">
@@ -152,6 +153,7 @@ questionsVeronika.forEach(item => {
           </div>
           <button class="btn js-next">Продолжить</button>
         </div>
+        </li>
     </ul>
   </div>
 </section> `)
@@ -330,11 +332,9 @@ btnStartVeronika.forEach(item => {
     game(0, questionsVeronika, cardVeronika, resultVeronikaBox)
   })
 })
-console.log(btnRepeat)
 
 btnRepeat.forEach(item => {
   item.addEventListener('click', function () {
-  console.log('btnRepeat')
   repeatGame()
 })
 })
@@ -353,8 +353,7 @@ function repeatGame() {
     top: 0,
     behavior: "smooth"
   })
-  document.querySelector('.js-start').classList.remove('none-active')
-  pageResult.classList.remove('active-block')
+  location.reload()
 }
 
 function game(i, person, card, resultEl) {
@@ -373,12 +372,13 @@ function game(i, person, card, resultEl) {
     item.forEach((elem, ind) => {
 
       elem.addEventListener('click', function (e) {
-
+        e.preventDefault()
         item.forEach(it => {
           it.classList.add('none-active')
         })
         elem.classList.remove('none-active')
         elem.classList.add('active')
+        elem.disabled = true
 
         itemText.forEach(text => {
           text.classList.remove('active-block')
